@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALCULATOR</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            font-family: sans-serif;
+            box-sizing: border-box;
+        }
+        .container{
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(to right, #000000, #f3f1f1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .cal{
+            background-color: rgba(120, 197, 182, 0.979);
+            padding: 15px;
+            position: relative;
+        }
+        button{
+            border: 1px solid black;
+            font-size: larger;
+            width: 60px;
+            height: 40px;
+            background-color: white;
+            
+        }
+        button:hover{
+            background-color: whitesmoke;
+        }
+        .key{
+            border: 5px solid rgb(76, 76, 243);
+            border-radius: 3px;
+            position: relative;}
+        .equals{
+            position: absolute;
+            right: 2px;
+            bottom: 0px;
+        }
+        .equals button{
+            height: 160px;
+            background-color: rgb(250, 136, 94);
+        }
+        .div1 {
+            display: flex;
+            justify-content: flex-end;
+            border: 3px solid palevioletred;
+            
+        }
+        .div1 input{
+            width: 257px;
+            font-size: 45px;
+            box-shadow: none;
+            height: 70px;
+            border-radius: 5px;
+            border: none;
+            margin: 0;
+            text-align: right;
+
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+       <div class="cal">
+            <div class="div1" >
+                <input type="text" name="display" id="display" >
+            </div>
+            <div class="key">
+                <div >
+                    <button  class="operator" onclick="selectoperator('+')">+</button>
+                    <button class="operator" onclick="selectoperator('-')">-</button>
+                    <button class="operator" onclick="selectoperator('*')">x</button>
+                    <button class="operator" onclick="selectoperator('/')">/</button>
+                    </div>
+        
+                    <div>
+                        <button onclick="selectnum(7)">7</button>
+                        <button onclick="selectnum(8)">8</button>
+                        <button onclick="selectnum(9)">9</button>
+                        </div>
+        
+                    <div>
+                        <button onclick="selectnum(4)">4</button>
+                        <button onclick="selectnum(5)">5</button>
+                        <button onclick="selectnum(6)">6</button>
+                    </div>
+        
+                    <div>
+                        <button onclick="selectnum(1)">1</button>
+                        <button onclick="selectnum(2)">2</button>
+                        <button onclick="selectnum(3)">3</button>
+                    </div>
+        
+                    <div>
+                        <button onclick="selectnum(0)">0</button>
+                        <button onclick="selectnum('.')">.</button>
+                        <button class="clear" onclick="clearDisplay()">AC</button>
+                    </div>
+                    <div class="equals"><button class="equals" onclick="calculate()">=</button></div>
+            </div>
+            
+       </div>
+    </div>
+    
+    <script>
+        let display = '';
+        let firstnum = null;
+        let operator = null;
+    
+        function selectnum(number) {
+            if (display === '0') {
+                display = '';
+            }
+            display =display + number;
+            updateDisplay();
+        }
+    
+        function selectoperator(selectedOperator){
+            if (firstnum === null) {
+                firstnum = parseFloat(display);
+                operator = selectedOperator;
+                display = selectedOperator;
+            };updateDisplay();
+        }
+    
+        function calculate() {
+            if (operator&&firstnum!==null){
+                const secondnum = parseFloat(display);
+                switch (operator) {
+                    case '+':
+                        display=firstnum+secondnum;
+                        break;
+                    case '-':
+                        display=firstnum-secondnum;
+                        break;
+                    case'*':
+                        display=firstnum*secondnum;
+                        break;
+                    case'/':
+                        display=secondnum!==0?firstnum/secondnum:'Error';
+                        break;
+                }
+                firstnum=null;
+                operator=null;
+                updateDisplay();
+            }
+        }
+    
+        function clearDisplay() {
+            display='0';
+            firstnum=null;
+            operator=null;
+            updateDisplay();
+        }
+    
+        function updateDisplay() {
+            document.getElementById('display').value = display;
+        }
+    
+        updateDisplay();
+    </script>
+    
+</body>
+</html>

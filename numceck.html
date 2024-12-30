@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUMCHECK</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            font-family: sans-serif;
+            border: 50px solid yellow;
+            height: 80vh;
+            background-color: black;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+        }
+        .container{
+            background-color: yellow;
+            border-radius: 20px;
+            color: black;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+        .form{
+            display: flex;
+            flex-direction: column;
+            margin: 10px 50px;  
+        }
+        .form input{
+            margin: 5px 0;
+        }
+        button{
+            display: flex;
+            justify-content: center;
+            border-radius: 5px;
+            background-color: black;
+            color: aliceblue;
+            margin: 0 100px;
+        }
+
+    </style>
+</head>
+<body>
+        <div>
+        <div class="container">
+        <h3>CHECK IF NUMBER IS POSITIVE NEGATIVE OR ZERO</h3>
+        <div class="form">
+            <label for="number">ENTER NUMBER</label>
+            <input type="text"  id="display" placeholder="Enter number to check">
+            <button id="check" onclick="check()">CHECK</button>
+            <input type="text" id="result" readonly>
+        </div>
+        </div>
+        </div>
+    
+
+    <script>
+        
+        function check(){
+            let num=parseFloat(document.getElementById('display').value);;
+            let display;
+                if(num<0){
+                    display='NUMBER IS A NEGATIVE INTEGER'
+                }else if(num==0){
+                    display='NUMBER IS 0'
+                }else{
+                    display='NUMBER IS POSITIVE'
+                }
+
+                document.getElementById('result').value=display;
+            }
+        
+    </script>
+</body>
+</html>

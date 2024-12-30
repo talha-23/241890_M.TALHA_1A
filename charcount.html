@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>charcounter</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right,red , white);
+            display: flex;
+            justify-content: center;
+            align-items: center;    
+            font-family: sans-serif; 
+            height: 100vh;     
+        }
+        .container{
+            background-color: bisque;
+            display: flex;
+            flex-direction: row;
+            padding: 10px;
+            height: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center; 
+            border-radius: 20px
+        }
+        .div1{
+            
+            padding: 50px;
+        }
+        .div2{
+            display: flex;
+            flex-direction: column;
+            padding: 50px;
+            margin: 10px 0;
+        }
+        .div2 input{
+            margin: 10px 0;
+            height: 20px;
+        }
+        button{
+            background-color: blue;
+            color: aliceblue;
+            margin: 0 20%;
+            border-radius: 5px;
+            padding: 3px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="div1">
+            <h2>lets count :)</h2>
+        </div><hr>
+        <div class="div2">
+            <label for="string">ENTER THE STRING</label>
+            <input type="text"  id="txt" placeholder="enter the string">
+            <label for="string">ENTER THE CHAR</label>
+            <input type="text" id="char" placeholder="enter the char to count">
+            <button onclick="count()">CHECK</button>
+            <input type="text" id="result" readonly>
+        </div>
+    </div>
+
+    <script>
+        function count(){
+            let string=document.getElementById('txt').value;
+            let char=document.getElementById('char').value;
+            let count=0;
+
+            for(i=0;i<string.length;i++){
+                if(string[i]===char){
+                    count++;
+                }
+            }
+            document.getElementById('result').value=count;
+            }
+            </script>
+    
+    
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        div{
+            background-color: cadetblue;
+            border: 5px solid black;
+            border-radius: 10px;
+            padding: 10px;
+            margin-top: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>hello talha</h1>
+    <p id="para"></p>
+    </div>
+
+    <script>
+        let a = [
+            [1, 2, 1, 24],
+            [8, 11, 9, 4],
+            [7, 0, 7, 27],
+            [7, 4, 28, 14],
+            [3, 10, 26, 7]
+        ];
+        function display() {
+            let output = '';  
+            for (let i = 0; i < a.length; i++) {
+                let row = '';  
+                for (let j = 0; j < a[i].length; j++) {
+                    row =row + (a[i][j] + ', ');  
+                }
+                output= output+('{'+row +'}<br>'); 
+            }
+            document.getElementById('para').innerHTML = output;
+        }
+
+        display();  
+    </script>
+</body>
+</html>
